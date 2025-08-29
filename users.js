@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const User = require("./models/user");
 const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res) => {
@@ -22,15 +22,17 @@ exports.register = async (req, res) => {
       process.env.JWT_SECRET || "secret",
       { expiresIn: "1d" }
     );
-    res.status(201).json({
-      token,
-      user: {
-        email: user.email,
-        id: user._id,
-        username: user.username,
-        avatarUrl: user.avatarUrl,
-      },
-    });
+    res
+      .status(201)
+      .json({
+        token,
+        user: {
+          email: user.email,
+          id: user._id,
+          username: user.username,
+          avatarUrl: user.avatarUrl,
+        },
+      });
   } catch (err) {
     res
       .status(500)

@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./dist/* lutrunks11@www.showme.jumpingcrab.com:/home/lutrunks11@/Frontend"
+    "deploy": "npm run build && ssh lutrunks11@www.showme.jumpingcrab.com 'mkdir -p /home/lutrunks11/Frontend && rm -rf /home/lutrunks11/Frontend/*' && scp -r ./dist/* lutrunks11@www.showme.jumpingcrab.com:/home/lutrunks11/Frontend/",
+    "deploy:quick": "ssh lutrunks11@www.showme.jumpingcrab.com 'mkdir -p /home/lutrunks11/Frontend && rm -rf /home/lutrunks11/Frontend/*' && scp -r ./dist/* lutrunks11@www.showme.jumpingcrab.com:/home/lutrunks11/Frontend/"
   },
   "dependencies": {
     "react": "^18.3.1",
